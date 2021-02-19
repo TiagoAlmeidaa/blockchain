@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.n26.blockchain"
+        applicationId "com.tiago.blockchain"
 
         minSdkVersion 21
         targetSdkVersion 30
