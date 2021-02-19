@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    app:cardBackgroundColor="@android:color/black"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="@dimen/card_view_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/toolbar_back_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_12"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar_title_text_view"
+            app:layout_constraintEnd_toStartOf="@id/toolbar_title_text_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/toolbar_title_text_view"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:srcCompat="@drawable/icon_back" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/toolbar_title_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_24"
+            android:layout_marginEnd="@dimen/spacing_12"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_for_toolbar"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/toolbar_grid_image_view"
+            app:layout_constraintStart_toEndOf="@id/toolbar_back_image_view"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Toolbar title" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/toolbar_grid_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_12"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar_title_text_view"
+            app:layout_constraintEnd_toStartOf="@id/toolbar_filter_image_view"
+            app:layout_constraintStart_toEndOf="@id/toolbar_title_text_view"
+            app:layout_constraintTop_toTopOf="@id/toolbar_title_text_view"
+            app:srcCompat="@drawable/icon_grid"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/toolbar_filter_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_24"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar_title_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/toolbar_grid_image_view"
+            app:layout_constraintTop_toTopOf="@id/toolbar_title_text_view"
+            app:srcCompat="@drawable/icon_filter"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

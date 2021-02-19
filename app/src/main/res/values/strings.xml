@@ -1,3 +1,33 @@
 <resources>
-    <string name="app_name">Blockchain</string>
+
+    <string name="app_name">BlockChain</string>
+
+    <string name="bar_chart_fragment_title">Bar</string>
+
+    <string name="dialog_period_one_week">1 Week</string>
+    <string name="dialog_period_one_month">1 Month</string>
+    <string name="dialog_period_one_year">1 Year</string>
+    <string name="dialog_period_title">Period</string>
+    <string name="dialog_period_description">In which period do you want to check the prices?</string>
+    <string name="dialog_period_filter_button">Filter</string>
+
+    <string name="home_fragment_line_chart_button">Line chart</string>
+    <string name="home_fragment_bar_chart_button">Bar chart</string>
+    <string name="home_fragment_description">You can checkout the block chain market prices in different charts!</string>
+
+    <string name="line_chart_fragment_title">Line</string>
+
+    <string name="on_boarding_vertical_pinch_description">Use the vertical pinch gesture to zoom in and out the money axis of the chart!</string>
+    <string name="on_boarding_vertical_pinch_button">OK</string>
+
+    <string name="on_boarding_horizontal_pinch_description">Use the horizontal pinch gesture to zoom in and out the date axis of the chart!</string>
+    <string name="on_boarding_horizontal_pinch_button">Got it</string>
+
+    <string name="pattern_price_format">$%dk</string>
+    <string name="pattern_filter_information">Showing results of the last %s</string>
+
+    <string name="widget_retry_button">Retry</string>
+    <string name="widget_retry_unknown_error_message">Sorry, it was not possible to fetch the data from the API, please try again later.</string>
+    <string name="widget_retry_internet_error_message">It was not possible to fetch the data from the API, please check your internet connection and try again.</string>
+
 </resources>

@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'jacoco'
 }
 
 android {
@@ -8,13 +10,17 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.tiago.blockchain"
+        applicationId "com.n26.blockchain"
+
         minSdkVersion 21
         targetSdkVersion 30
+
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -30,15 +36,44 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
+    implementation Dependencies.kotlinJdk
+    implementation Dependencies.coreKtx
+    implementation Dependencies.appCompat
+    implementation Dependencies.material
+    implementation Dependencies.navigationUI
+    implementation Dependencies.navigationFragmentKtx
+    implementation Dependencies.chart
+    implementation Dependencies.rxJava
+    implementation Dependencies.rxKotlin
+    implementation Dependencies.rxAndroid
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitRxJavaAdapter
+    implementation Dependencies.retrofitGsonAdapter
+    implementation Dependencies.multiDex
+    implementation Dependencies.viewModelKtx
+    implementation Dependencies.lottie
+    implementation Dependencies.dagger
+    kapt Dependencies.daggerCompiler
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    debugImplementation Dependencies.fragmentTesting
+
+    testImplementation Dependencies.jUnit
+    testImplementation Dependencies.mockK
+    testImplementation Dependencies.coroutinesTest
+    testImplementation Dependencies.coreTesting
+
+    androidTestImplementation Dependencies.jUnit
+    androidTestImplementation Dependencies.jUnitExt
+    androidTestImplementation Dependencies.jUnitKtx
+    androidTestImplementation Dependencies.espresso
+
 }

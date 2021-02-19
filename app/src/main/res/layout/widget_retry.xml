@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/spacing_48" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/spacing_48" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/card_view_corner_radius"
+        app:cardElevation="@dimen/card_view_elevation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_24">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/warning_image_view"
+                android:layout_width="@dimen/image_view_retry_size"
+                android:layout_height="@dimen/image_view_retry_size"
+                app:layout_constraintBottom_toTopOf="@id/message_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:srcCompat="@drawable/icon_warning" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/message_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_24"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_for_description"
+                app:layout_constraintBottom_toTopOf="@id/retry_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/warning_image_view"
+                tools:text="@string/widget_retry_unknown_error_message" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/retry_button"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/spacing_24"
+                android:backgroundTint="@android:color/black"
+                android:text="@string/widget_retry_button"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/message_text_view" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

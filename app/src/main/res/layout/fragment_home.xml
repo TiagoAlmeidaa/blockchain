@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_home_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/spacing_48" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/spacing_48" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/card_view_corner_radius"
+        app:cardElevation="@dimen/card_view_elevation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_24">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/block_chain_image_view"
+                android:layout_width="@dimen/image_view_home_size"
+                android:layout_height="@dimen/image_view_home_size"
+                app:layout_constraintBottom_toTopOf="@id/title_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:srcCompat="@drawable/icon_block_chain" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_12"
+                android:text="@string/app_name"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_for_title"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/description_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/block_chain_image_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/description_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_12"
+                android:text="@string/home_fragment_description"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_size_for_description"
+                app:layout_constraintBottom_toTopOf="@id/line_chart_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_text_view" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/line_chart_button"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/spacing_12"
+                android:backgroundTint="@android:color/black"
+                android:text="@string/home_fragment_line_chart_button"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toTopOf="@id/bar_chart_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description_text_view" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bar_chart_button"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:backgroundTint="@android:color/black"
+                android:text="@string/home_fragment_bar_chart_button"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_chart_button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

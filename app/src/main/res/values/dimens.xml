@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="button_height">60dp</dimen>
+
+    <dimen name="card_view_corner_radius">12dp</dimen>
+    <dimen name="card_view_elevation">4dp</dimen>
+
+    <dimen name="image_view_home_size">60dp</dimen>
+    <dimen name="image_view_retry_size">48dp</dimen>
+
+    <dimen name="lottie_animation_on_boarding_size">250dp</dimen>
+
+    <dimen name="spacing_12">12dp</dimen>
+    <dimen name="spacing_24">24dp</dimen>
+    <dimen name="spacing_48">48dp</dimen>
+
+    <dimen name="text_size_for_description">16sp</dimen>
+    <dimen name="text_size_for_toolbar">16sp</dimen>
+    <dimen name="text_size_for_on_boarding">18sp</dimen>
+    <dimen name="text_size_for_title">22sp</dimen>
+
+</resources>

@@ -1,0 +1,62 @@
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "0.8.6"
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+    println ''
+    println '> Task :testCoverageReport started'
+
+    reports {
+        csv.enabled false
+        xml {
+            enabled true
+            destination file("${buildDir}/jacoco/reports/xml/report.xml")
+        }
+        html {
+            enabled true
+            destination file("${buildDir}/jacoco/reports/html/coverage-report")
+        }
+    }
+
+    def testExclusions = [
+            '**/databinding/**/*.*',
+            '**/android/databinding/*Binding.*',
+            '**/BR.*',
+            '**/R.*',
+            '**/R$*.*',
+            '**/BuildConfig.*',
+            '**/Manifest*.*',
+            '**/*_MembersInjector.*',
+            '**/*Module_*Factory.*',
+            '**/*Fragment*.*',
+            '**/*Activity*.*',
+            '**/*Adapter*.*',
+            '**/*ViewPager*.*',
+            '**/*ViewHolder*.*',
+            '**/*Application*.*',
+            '**/*Module*.*',
+            '**/util/*',
+            '**/ui/*',
+    ]
+
+    def debugTree = fileTree(
+            dir: "$buildDir/tmp/kotlin-classes/debug",
+            excludes: testExclusions
+    )
+    def mainSource = "$projectDir/src/main/java"
+
+    sourceDirectories.from = files([mainSource])
+    classDirectories.from = files([debugTree])
+
+    executionData.from = fileTree(
+            dir: project.buildDir,
+            includes: [
+                    'jacoco/testDebugUnitTest.exec',
+                    'outputs/code-coverage/connected/*coverage.ec'
+            ]
+    )
+
+    println '> Task :testCoverageReport finished'
+}
