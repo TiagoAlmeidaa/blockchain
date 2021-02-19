@@ -1,4 +1,4 @@
-# BlockChain market price app
+# BlockChain
 
 A simple project that checks the current market price of BlockChain and displays it on a graph.
 At the moment there are only two available charts, a line and bar charts.
