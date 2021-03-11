@@ -18,16 +18,17 @@ object Dependencies {
     const val multiDex = "com.android.support:multidex:1.0.3"
     const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     const val lottie = "com.airbnb.android:lottie:3.6.0"
+    const val viewBindingDelegate = "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.4.4"
     const val dagger = "com.google.dagger:dagger:2.29.1"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:2.29.1"
 
     const val fragmentTesting = "androidx.fragment:fragment-testing:1.3.0"
+    const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.6"
 
     const val jUnit = "junit:junit:4.13.1"
     const val jUnitExt = "androidx.test.ext:junit:1.1.2"
     const val jUnitKtx = "androidx.test.ext:junit-ktx:1.1.2"
     const val mockK = "io.mockk:mockk:1.10.0"
-    const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7"
     const val coreTesting = "android.arch.core:core-testing:1.1.1"
     const val espresso = "androidx.test.espresso:espresso-core:3.3.0"
 }

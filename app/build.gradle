@@ -61,19 +61,19 @@ dependencies {
     implementation Dependencies.multiDex
     implementation Dependencies.viewModelKtx
     implementation Dependencies.lottie
+    implementation Dependencies.viewBindingDelegate
     implementation Dependencies.dagger
     kapt Dependencies.daggerCompiler
 
     debugImplementation Dependencies.fragmentTesting
+    debugImplementation Dependencies.leakCanary
 
     testImplementation Dependencies.jUnit
     testImplementation Dependencies.mockK
-    testImplementation Dependencies.coroutinesTest
     testImplementation Dependencies.coreTesting
 
     androidTestImplementation Dependencies.jUnit
     androidTestImplementation Dependencies.jUnitExt
     androidTestImplementation Dependencies.jUnitKtx
     androidTestImplementation Dependencies.espresso
-
 }

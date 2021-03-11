@@ -1,4 +1,4 @@
-package com.n26.blockchain.ui.fragment
+package com.tiago.blockchain.ui.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -21,7 +21,7 @@ import com.tiago.blockchain.viewmodel.chart.ChartViewModel
 import java.net.UnknownHostException
 import javax.inject.Inject
 
-abstract class BaseChartFragment : Fragment() {
+abstract class BaseChartFragment(layoutId: Int) : Fragment(layoutId) {
 
     private val blockChainApplication: BlockChainApplication by lazy {
         requireActivity().applicationContext as BlockChainApplication
@@ -81,7 +81,7 @@ abstract class BaseChartFragment : Fragment() {
         )
     }
 
-    protected fun handleMarketPriceFailed(exception: Exception) {
+    protected fun handleMarketPriceFailed(exception: Throwable) {
         setLoading(false)
 
         val messageId = if (exception is UnknownHostException) {

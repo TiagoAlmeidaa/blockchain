@@ -6,8 +6,8 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import com.tiago.blockchain.matcher.EspressoTestsMatchers.withDrawable
 import com.tiago.blockchain.R
+import com.tiago.blockchain.matcher.EspressoTestsMatchers.withDrawable
 import org.junit.Test
 import org.junit.runner.RunWith
 

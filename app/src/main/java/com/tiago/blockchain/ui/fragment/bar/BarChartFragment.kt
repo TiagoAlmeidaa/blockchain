@@ -8,17 +8,18 @@ import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.tiago.blockchain.model.state.BlockChainState
-import com.tiago.blockchain.model.vo.MarketPrice
-import com.tiago.blockchain.ui.component.ChartToolbar
-import com.n26.blockchain.ui.fragment.BaseChartFragment
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.tiago.blockchain.R
 import com.tiago.blockchain.databinding.FragmentBarChartBinding
 import com.tiago.blockchain.databinding.WidgetRetryBinding
+import com.tiago.blockchain.model.state.BlockChainState
+import com.tiago.blockchain.model.vo.MarketPrice
+import com.tiago.blockchain.ui.component.ChartToolbar
+import com.tiago.blockchain.ui.fragment.BaseChartFragment
 
-class BarChartFragment : BaseChartFragment() {
+class BarChartFragment : BaseChartFragment(R.layout.fragment_bar_chart) {
 
-    private val binding: FragmentBarChartBinding by lazy { FragmentBarChartBinding.inflate(layoutInflater) }
+    private val binding by viewBinding(FragmentBarChartBinding::bind)
 
     override fun getToolbar(): ChartToolbar = binding.toolbar
 
@@ -29,12 +30,6 @@ class BarChartFragment : BaseChartFragment() {
     override fun getRetryLayout(): WidgetRetryBinding = binding.retry
 
     override fun getCircularProgress(): ProgressBar = binding.circularProgress
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View = binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

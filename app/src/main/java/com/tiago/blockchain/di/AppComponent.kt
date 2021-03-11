@@ -1,7 +1,7 @@
 package com.tiago.blockchain.di
 
 import com.tiago.blockchain.di.module.NetworkModule
-import com.n26.blockchain.ui.fragment.BaseChartFragment
+import com.tiago.blockchain.ui.fragment.BaseChartFragment
 import dagger.Component
 import javax.inject.Singleton
 
