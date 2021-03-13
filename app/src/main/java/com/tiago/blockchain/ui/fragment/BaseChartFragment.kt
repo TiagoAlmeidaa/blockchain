@@ -13,6 +13,7 @@ import com.tiago.blockchain.R
 import com.tiago.blockchain.data.local.BlockChainPreferences
 import com.tiago.blockchain.databinding.DialogPeriodBinding
 import com.tiago.blockchain.databinding.WidgetRetryBinding
+import com.tiago.blockchain.model.vo.ApiError
 import com.tiago.blockchain.ui.MainActivity
 import com.tiago.blockchain.ui.component.ChartToolbar
 import com.tiago.blockchain.util.PeriodEnum
@@ -81,13 +82,14 @@ abstract class BaseChartFragment(layoutId: Int) : Fragment(layoutId) {
         )
     }
 
-    protected fun handleMarketPriceFailed(exception: Throwable) {
+    protected fun handleMarketPriceFailed(error: ApiError) {
         setLoading(false)
 
-        val messageId = if (exception is UnknownHostException) {
-            R.string.widget_retry_internet_error_message
-        } else {
-            R.string.widget_retry_unknown_error_message
+        val messageId = when(error) {
+            ApiError.ConnectionError -> R.string.widget_retry_internet_error_message
+            ApiError.InternalError -> R.string.widget_retry_internal_error_message
+            ApiError.NotFoundError -> R.string.widget_retry_not_found_error_message
+            ApiError.ExceptionNotMapped -> R.string.widget_retry_unknown_error_message
         }
 
         setupRetry(messageId)
@@ -100,7 +102,7 @@ abstract class BaseChartFragment(layoutId: Int) : Fragment(layoutId) {
         getFilterInformationTextView().setVisibility(!isLoading)
     }
 
-    private fun setupRetry(messageId: Int) {
+    protected fun setupRetry(messageId: Int) {
         getRetryLayout().apply {
             root.visible()
             messageTextView.text = getString(messageId)

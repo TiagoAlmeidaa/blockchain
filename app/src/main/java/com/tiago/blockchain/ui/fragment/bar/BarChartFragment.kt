@@ -1,9 +1,7 @@
 package com.tiago.blockchain.ui.fragment.bar
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.Observer
@@ -57,6 +55,7 @@ class BarChartFragment : BaseChartFragment(R.layout.fragment_bar_chart) {
             is BlockChainState.OnMarketPriceReceived -> handleMarketPriceReceived(state.marketPrice)
             is BlockChainState.OnMarketPriceFetchFailed -> handleMarketPriceFailed(state.exception)
             is BlockChainState.OnLoading -> setLoading()
+            is BlockChainState.InvalidResponse -> setupRetry(R.string.widget_retry_invalid_response_error_message)
         }
     }
 

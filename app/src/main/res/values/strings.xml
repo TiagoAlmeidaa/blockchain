@@ -28,6 +28,9 @@
 
     <string name="widget_retry_button">Retry</string>
     <string name="widget_retry_unknown_error_message">Sorry, it was not possible to fetch the data from the API, please try again later.</string>
+    <string name="widget_retry_internal_error_message">An internal error occurred, please contact the administrator.</string>
+    <string name="widget_retry_not_found_error_message">It was not possible to access the API service, please contact the administrator.</string>
     <string name="widget_retry_internet_error_message">It was not possible to fetch the data from the API, please check your internet connection and try again.</string>
+    <string name="widget_retry_invalid_response_error_message">The response from the server is incorrect, please contact the administrator.</string>
 
 </resources>

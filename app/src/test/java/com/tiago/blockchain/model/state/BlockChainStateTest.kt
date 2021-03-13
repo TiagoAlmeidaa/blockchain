@@ -1,5 +1,6 @@
 package com.tiago.blockchain.model.state
 
+import com.tiago.blockchain.model.vo.ApiError
 import com.tiago.blockchain.model.vo.MarketPrice
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -13,7 +14,7 @@ class BlockChainStateTest {
 
     @Test
     fun `should create OnMarketPriceFetchFailed correctly`() {
-        val expectedException = Exception("Testing exception")
+        val expectedException = ApiError.ExceptionNotMapped
         val expectedState = BlockChainState.OnMarketPriceFetchFailed(expectedException)
 
         state = expectedState
