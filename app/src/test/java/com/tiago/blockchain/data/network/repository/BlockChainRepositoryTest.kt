@@ -20,7 +20,6 @@ import org.junit.runners.JUnit4
 import retrofit2.HttpException
 import java.net.UnknownHostException
 
-@ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
 class BlockChainRepositoryTest {
 
