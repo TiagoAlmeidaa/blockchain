@@ -15,6 +15,7 @@ class RxSchedulerRule : TestRule {
                 RxAndroidPlugins.setInitMainThreadSchedulerHandler { TrampolineScheduler.instance() }
                 RxJavaPlugins.setIoSchedulerHandler { TrampolineScheduler.instance() }
                 RxJavaPlugins.setComputationSchedulerHandler { TrampolineScheduler.instance() }
+                RxJavaPlugins.setErrorHandler {}
                 try {
                     base!!.evaluate()
                 } finally {

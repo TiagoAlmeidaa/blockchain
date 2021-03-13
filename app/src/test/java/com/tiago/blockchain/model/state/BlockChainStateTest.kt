@@ -13,7 +13,16 @@ class BlockChainStateTest {
     private lateinit var state: BlockChainState
 
     @Test
-    fun `should create OnMarketPriceFetchFailed correctly`() {
+    fun `should create OnLoading correctly`() {
+        val expectedState = BlockChainState.OnLoading
+
+        state = expectedState
+
+        assertEquals(expectedState, state)
+    }
+
+    @Test
+    fun `should create OnMarketPriceFetchFailed with correct ApiError`() {
         val expectedException = ApiError.ExceptionNotMapped
         val expectedState = BlockChainState.OnMarketPriceFetchFailed(expectedException)
 
@@ -32,6 +41,15 @@ class BlockChainStateTest {
 
         assertEquals(expectedState, state)
         assertEquals(expectedState.marketPrice, expectedMarketPrice)
+    }
+
+    @Test
+    fun `should create InvalidResponse correctly`() {
+        val expectedState = BlockChainState.InvalidResponse
+
+        state = expectedState
+
+        assertEquals(expectedState, state)
     }
 
 }

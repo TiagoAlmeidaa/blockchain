@@ -25,6 +25,9 @@ class ChartViewModel @Inject constructor(
     }
 
     fun fetchMarketPrices(period: PeriodEnum) {
+        _state.postValue(BlockChainState.OnLoading)
+        _lastPeriod.postValue(period)
+
         disposables.add(
             repository
                 .fetchMarketPrices(period)

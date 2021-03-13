@@ -4,14 +4,16 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.tiago.blockchain.data.network.repository.BlockChainRepository
 import com.tiago.blockchain.model.state.BlockChainState
+import com.tiago.blockchain.model.vo.ApiError
+import com.tiago.blockchain.model.vo.BlockChainResponse
+import com.tiago.blockchain.model.vo.MarketPrice
 import com.tiago.blockchain.rule.RxSchedulerRule
 import com.tiago.blockchain.util.PeriodEnum
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import io.mockk.mockk
 import io.mockk.verify
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import io.reactivex.rxjava3.core.Observable
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -20,7 +22,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-@ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
 class ChartViewModelTest {
 
@@ -56,59 +57,83 @@ class ChartViewModelTest {
         state.removeObserver(observerState)
         lastPeriod.removeObserver(observerPeriod)
     }
-//
-//    @Test
-//    fun `getLastPeriod() should return ONE_MONTH when has no value in it`() {
-//        val result = viewModel.getLastPeriod()
-//
-//        assertEquals(PeriodEnum.ONE_MONTH, result)
-//    }
 
-//    @Test
-//    fun `getLastPeriod() should return the period passed into fetchMarketPrices() parameter`() {
-//        val expectedPeriod = PeriodEnum.ONE_WEEK
-//
-//        every {
-//            repository.fetchMarketPrices(expectedPeriod)
-//        }.returns(mockk())
-//
-//        viewModel.fetchMarketPrices(expectedPeriod)
-//
-//        val result = viewModel.getLastPeriod()
-//
-//        assertEquals(expectedPeriod, result)
-//    }
+    @Test
+    fun `getLastPeriod() should return ONE_MONTH when has no value in it`() {
+        val result = viewModel.getLastPeriod()
 
-//    @Test
-//    fun `fetchMarketPrices() should catch the exception correctly`() {
-//        val period = PeriodEnum.ONE_YEAR
-//        val expectedException = Exception("Error while testing")
-//
-//        every {
-//            repository.fetchMarketPrices(period)
-//        }.throws(expectedException)
-//
-//        viewModel.fetchMarketPrices(period)
-//
-//        verify(exactly = 1) { observerState.onChanged(BlockChainState.OnLoading) }
-//        verify(exactly = 1) { observerPeriod.onChanged(period) }
-//        verify(exactly = 1) { observerState.onChanged(BlockChainState.OnMarketPriceFetchFailed(expectedException)) }
-//    }
+        assertEquals(PeriodEnum.ONE_MONTH, result)
+    }
 
-//    @Test
-//    fun `fetchMarketPrices() should receive the MarketPrice correctly`() {
-//        val expectedResult = MarketPrice()
-//        val expectedPeriod = PeriodEnum.ONE_WEEK
-//
-//        every {
-//            repository.fetchMarketPrices(expectedPeriod)
-//        }.returns(expectedResult)
-//
-//        viewModel.fetchMarketPrices(expectedPeriod)
-//
-//        verify(exactly = 1) { observerState.onChanged(BlockChainState.OnLoading) }
-//        verify(exactly = 1) { observerPeriod.onChanged(expectedPeriod) }
-//        verify(exactly = 1) { observerState.onChanged(BlockChainState.OnMarketPriceReceived(expectedResult)) }
-//    }
+    @Test
+    fun `getLastPeriod() should return the period passed into fetchMarketPrices() parameter`() {
+        val expectedPeriod = PeriodEnum.ONE_WEEK
+
+        every {
+            repository.fetchMarketPrices(expectedPeriod)
+        }.returns(Observable.error(Throwable()))
+
+        viewModel.fetchMarketPrices(expectedPeriod)
+
+        val result = viewModel.getLastPeriod()
+
+        assertEquals(expectedPeriod, result)
+    }
+
+    @Test
+    fun `fetchMarketPrices() s`() {
+        val period = PeriodEnum.ONE_YEAR
+        val marketPrice = MarketPrice()
+        val response = BlockChainResponse(marketPrice = marketPrice)
+
+        every {
+            repository.fetchMarketPrices(period)
+        }.returns(Observable.just(response))
+
+        viewModel.fetchMarketPrices(period)
+
+        verify(exactly = 1) { observerState.onChanged(BlockChainState.OnLoading) }
+        verify(exactly = 1) { observerPeriod.onChanged(period) }
+        verify(exactly = 1) {
+            observerState.onChanged(
+                BlockChainState.OnMarketPriceReceived(
+                    marketPrice
+                )
+            )
+        }
+    }
+
+    @Test
+    fun `fetchMarketPrices() c`() {
+        val period = PeriodEnum.ONE_YEAR
+        val error = ApiError.InternalError
+        val response = BlockChainResponse(error = error)
+
+        every {
+            repository.fetchMarketPrices(period)
+        }.returns(Observable.just(response))
+
+        viewModel.fetchMarketPrices(period)
+
+        verify(exactly = 1) { observerState.onChanged(BlockChainState.OnLoading) }
+        verify(exactly = 1) { observerPeriod.onChanged(period) }
+        verify(exactly = 1) { observerState.onChanged(BlockChainState.OnMarketPriceFetchFailed(error)) }
+    }
+
+    @Test
+    fun `fetchMarketPrices() d`() {
+        val period = PeriodEnum.ONE_YEAR
+        val response = BlockChainResponse()
+
+        every {
+            repository.fetchMarketPrices(period)
+        }.returns(Observable.just(response))
+
+        viewModel.fetchMarketPrices(period)
+
+        verify(exactly = 1) { observerState.onChanged(BlockChainState.OnLoading) }
+        verify(exactly = 1) { observerPeriod.onChanged(period) }
+        verify(exactly = 1) { observerState.onChanged(BlockChainState.InvalidResponse) }
+    }
 
 }

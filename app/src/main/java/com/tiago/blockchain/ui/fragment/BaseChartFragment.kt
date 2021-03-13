@@ -19,7 +19,6 @@ import com.tiago.blockchain.ui.component.ChartToolbar
 import com.tiago.blockchain.util.PeriodEnum
 import com.tiago.blockchain.util.extensions.*
 import com.tiago.blockchain.viewmodel.chart.ChartViewModel
-import java.net.UnknownHostException
 import javax.inject.Inject
 
 abstract class BaseChartFragment(layoutId: Int) : Fragment(layoutId) {
