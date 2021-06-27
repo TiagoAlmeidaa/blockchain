@@ -1,9 +1,10 @@
 ## BlockChain
 
 A simple project that checks the current market price of BlockChain and displays it on a graph.
-At the moment there are only two available charts, a line and bar charts.
+At the moment there are only two available charts:
 
-The project has some improvements to do, so it's not finished yet.
+- Line Chart 
+- Bar Chart
 
 > ### Current screens:
 
